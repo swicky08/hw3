@@ -27,16 +27,32 @@ class App extends Component {
       hand: ["face_down", "face_down", "face_down", "face_down", "face_down"]
     }
   }
+
+  callNewDeck(){
+    let newDeck=shuffledDeck()
+    this.setState({
+      hand:[newDeck[0],newDeck[1],newDeck[2],newDeck[3],newDeck[4]]
+    })
+  }
+
   render() {
     // array to hold JSX elements
-    let cards = []; 
+
+    let card1= "http://golearntocode.com/images/cards/" + this.state.hand[0] + ".png"
+    let card2= "http://golearntocode.com/images/cards/" + this.state.hand[1] + ".png"
+    let card3= "http://golearntocode.com/images/cards/" + this.state.hand[2] + ".png"
+    let card4= "http://golearntocode.com/images/cards/" + this.state.hand[3] + ".png"
+    let card5= "http://golearntocode.com/images/cards/" + this.state.hand[4] + ".png"
+    let cards = [<img src={card1}/>, <img src={card2}/>, <img src={card3}/>, <img src={card4}/>, <img src={card5}/>];
+
     return (
       <div className="App">
-        {cards}     
-        <p><button>Deal a new hand</button></p>
+        {cards}
+        <p><button onClick={()=> this.callNewDeck()}>Deal a new hand</button></p>
       </div>
     );
   }
 }
+
 
 export default App;
